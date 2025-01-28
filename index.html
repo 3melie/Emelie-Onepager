@@ -455,8 +455,8 @@
 
   const hoverables = document.querySelectorAll('.hoverable');
 
-// Background Color
-const backgroundColorOptions = document.querySelectorAll('#background-color-options .color-option');
+  // Background Color
+  const backgroundColorOptions = document.querySelectorAll('#background-color-options .color-option');
     backgroundColorOptions.forEach(option => {
       option.addEventListener('mouseenter', () => {
         backgroundColorOptions.forEach(opt => opt.classList.remove('selected'));
@@ -478,86 +478,80 @@ const backgroundColorOptions = document.querySelectorAll('#background-color-opti
     });
 
     // Helper function to update slider visualization
-function updateSlider(slider, value, max) {
+  function updateSlider(slider, value, max) {
   const percentage = (value / max) * 100;
   slider.style.setProperty('--slider-value', `${percentage}%`);
-}
+    }
 
-// Scale Slider
-const scaleSlider = document.getElementById('scale-slider');
-scaleSlider.addEventListener('mousemove', (e) => {
-  const rect = scaleSlider.getBoundingClientRect();
-  const value = ((e.clientX - rect.left) / rect.width) * 2; // Map to range 0 - 2
-  const scale = Math.min(Math.max(value, 0), 2).toFixed(1);
-  document.documentElement.style.setProperty('--hover-scale', scale);
-  scaleSlider.value = value*50;
-  updateSlider(scaleSlider, scale, 2);
-});
+  // Scale Slider
+  const scaleSlider = document.getElementById('scale-slider');
+  scaleSlider.addEventListener('mousemove', (e) => {
+    const rect = scaleSlider.getBoundingClientRect();
+    const value = ((e.clientX - rect.left) / rect.width) * 2; // Map to range 0 - 2
+    const scale = Math.min(Math.max(value, 0), 2).toFixed(1);
+    document.documentElement.style.setProperty('--hover-scale', scale);
+    scaleSlider.value = value*50;
+    updateSlider(scaleSlider, scale, 2);
+  });
 
-scaleSlider.addEventListener('mouseleave', () => {
-  const scale = getComputedStyle(document.documentElement).getPropertyValue('--hover-scale');
-  document.documentElement.style.setProperty('--hover-scale', scale);
-});
+  scaleSlider.addEventListener('mouseleave', () => {
+    const scale = getComputedStyle(document.documentElement).getPropertyValue('--hover-scale');
+    document.documentElement.style.setProperty('--hover-scale', scale);
+  });
 
-// Rotation Slider
-const rotationSlider = document.getElementById('rotation-slider');
-rotationSlider.addEventListener('mousemove', (e) => {
-  const rect = rotationSlider.getBoundingClientRect();
-  const value = ((e.clientX - rect.left) / rect.width) * 180; // Map to range 0 - 360
-  const rotation = Math.min(Math.max(value, 0), 180).toFixed(0);
-  document.documentElement.style.setProperty('--hover-rotation', rotation + 'deg');
-  rotationSlider.value = value;
-  updateSlider(rotationSlider, rotation, 180);
-});
+  // Rotation Slider
+  const rotationSlider = document.getElementById('rotation-slider');
+  rotationSlider.addEventListener('mousemove', (e) => {
+    const rect = rotationSlider.getBoundingClientRect();
+    const value = ((e.clientX - rect.left) / rect.width) * 180; // Map to range 0 - 360
+    const rotation = Math.min(Math.max(value, 0), 180).toFixed(0);
+    document.documentElement.style.setProperty('--hover-rotation', rotation + 'deg');
+    rotationSlider.value = value;
+    updateSlider(rotationSlider, rotation, 180);
+  });
 
-rotationSlider.addEventListener('mouseleave', () => {
-  const rotation = getComputedStyle(document.documentElement).getPropertyValue('--hover-rotation');
-  document.documentElement.style.setProperty('--hover-rotation', rotation);
-});
-
-
-
-// Flag, um zu überprüfen, ob die Maus über einem Element ist
-let isOverElement = false;
-
-// Event-Listener für Mausbewegungen
-document.body.addEventListener('mousemove', (e) => {
-  // Wenn die Maus über einem Element ist, keinen Trail anzeigen
-  if (isOverElement) return;
-
-  // Erstelle ein neues Spur-Element
-  const trail = document.createElement('div');
-  trail.classList.add('trail');
-
-  // Setze die Position der Spur relativ zur Maus
-  trail.style.left = `${e.pageX}px`;
-  trail.style.top = `${e.pageY}px`;
-
-  // Füge die Spur zum Dokument hinzu
-  document.body.appendChild(trail);
-
-  // Entferne die Spur nach 1 Sekunde, um Speicher zu sparen
-  setTimeout(() => {
-    trail.remove();
-  }, 1000);
-});
-
-// Event-Listener, um festzustellen, ob die Maus über einem Element ist
-document.body.addEventListener('mouseover', (e) => {
-  if (e.target !== document.body) {
-    isOverElement = true;
-  }
-});
-
-document.body.addEventListener('mouseout', (e) => {
-  if (e.target !== document.body) {
-    isOverElement = false;
-  }
-});
-
-
-  
+  rotationSlider.addEventListener('mouseleave', () => {
+    const rotation = getComputedStyle(document.documentElement).getPropertyValue('--hover-rotation');
+    document.documentElement.style.setProperty('--hover-rotation', rotation);
+  });
 
 
 
+  // Flag, um zu überprüfen, ob die Maus über einem Element ist
+  let isOverElement = false;
+
+  // Event-Listener für Mausbewegungen
+  document.body.addEventListener('mousemove', (e) => {
+    // Wenn die Maus über einem Element ist, keinen Trail anzeigen
+    if (isOverElement) return;
+
+    // Erstelle ein neues Spur-Element
+    const trail = document.createElement('div');
+    trail.classList.add('trail');
+
+    // Setze die Position der Spur relativ zur Maus
+    trail.style.left = `${e.pageX}px`;
+    trail.style.top = `${e.pageY}px`;
+
+    // Füge die Spur zum Dokument hinzu
+    document.body.appendChild(trail);
+
+    // Entferne die Spur nach 1 Sekunde, um Speicher zu sparen
+    setTimeout(() => {
+      trail.remove();
+    }, 1000);
+  });
+
+  // Event-Listener, um festzustellen, ob die Maus über einem Element ist
+  document.body.addEventListener('mouseover', (e) => {
+    if (e.target !== document.body) {
+      isOverElement = true;
+    }
+  });
+
+  document.body.addEventListener('mouseout', (e) => {
+    if (e.target !== document.body) {
+      isOverElement = false;
+    }
+  });
 </script>
