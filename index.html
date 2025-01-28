@@ -207,13 +207,14 @@
   flex: 1;
   padding: 50px 20px;
   text-align: center;
-  background-color: var(--hover-bg-color);
+  color: #b7c4ec; /* Standardfarbe: Lila */
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
 .hoverable:hover {
+  color: var(--hover-bg-color); /* Wechselt zu der ausgewählten Farbe */
   box-shadow: 0 0 40px var(--hover-glow-color);
   background-color: var(--hover-bg-color);
   transform: scale(var(--hover-scale)) rotate(var(--hover-rotation));
@@ -381,9 +382,6 @@
               </div>
             </div>
           </div>
-          
-
-
 
           <div class="form-row">
             <label for="glow-color">Glow:</label>
@@ -399,7 +397,7 @@
         </div>
     
         <div class="interactive-box">
-          <div class="hoverable" id="hoverable3" style="color: #b6c4ec;">Try Me!</div>
+          <div class="hoverable" id="hoverable3" style="color: #ffffff;">Try Me!</div>
 
         </div>
         <br>
