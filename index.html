@@ -135,7 +135,6 @@ ul {
   body {
     font-size: medium; /* Noch kleiner für sehr schmale Bildschirme */
     margin: 5px;
-    background-color: #2b4a36;
   }
 
   .hover-demo-item {
@@ -322,6 +321,51 @@ ul {
       }
     }
 
+    /* Pop-up für Touch-Geräte */
+@media (hover: none) {
+  .touch-popup {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1000;
+    text-align: center;
+    font-size: 16px;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+/* Banner für Touch-Geräte am oberen Rand */
+@media (hover: none) {
+  .touch-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    z-index: 999;
+    font-size: 14px;
+    animation: slideDown 0.5s ease-in-out;
+  }
+
+  @keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+  }
+}
+
   </style>
 </head>
 
@@ -331,6 +375,10 @@ ul {
     <header class="hero">
       <h1>Discover the Power of Hover</h1>
     </header>
+
+    <div class="touch-popup">Diese Website zeigt Hover-Effekte. Auf Touch-Geräten kannst du durch Tippen den Effekt simulieren!</div>
+    <div class="touch-banner">Diese Website zeigt Hover-Effekte. Tippe, um sie auf Touch-Geräten zu simulieren!</div>
+    
 
     <!-- About Hover Section -->
     <section id="about-hover" class="section">
