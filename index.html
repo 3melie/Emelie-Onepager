@@ -321,8 +321,7 @@ ul {
       }
     }
 
-    /* Pop-up für Touch-Geräte */
-@media (hover: none) {
+    @media (hover: none) {
   .touch-popup {
     position: fixed;
     top: 20%;
@@ -336,35 +335,62 @@ ul {
     text-align: center;
     font-size: 16px;
     animation: fadeIn 0.5s ease-in-out;
+    display: none;
+  }
+
+  .touch-popup.show {
+    display: block;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+  }
+
+  .touch-info {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 20px;
+    z-index: 999;
+    cursor: pointer;
   }
 
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
   }
-}
 
-/* Banner für Touch-Geräte am oberen Rand */
-@media (hover: none) {
-  .touch-banner {
+  /* Info Text für das Info-Symbol */
+  .info-text {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #333;
+    bottom: 80px;
+    left: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
     color: #fff;
-    padding: 10px 0;
-    text-align: center;
-    z-index: 999;
+    padding: 15px;
+    border-radius: 10px;
     font-size: 14px;
-    animation: slideDown 0.5s ease-in-out;
+    width: 250px;
+    text-align: center;
+    display: none;
   }
 
-  @keyframes slideDown {
-    from { transform: translateY(-100%); }
-    to { transform: translateY(0); }
+  .info-text.show {
+    display: block;
   }
-}
 
   </style>
 </head>
@@ -376,9 +402,15 @@ ul {
       <h1>Discover the Power of Hover</h1>
     </header>
 
-    <div class="touch-popup">Diese Website zeigt Hover-Effekte. Auf Touch-Geräten kannst du durch Tippen den Effekt simulieren!</div>
-    <div class="touch-banner">Diese Website zeigt Hover-Effekte. Tippe, um sie auf Touch-Geräten zu simulieren!</div>
-    
+    <div class="touch-popup">
+  Diese Website zeigt Hover-Effekte. Auf Touch-Geräten kannst du durch Tippen den Effekt simulieren!
+  <button class="close-btn" onclick="closePopup()">X</button>
+</div>
+
+<div class="touch-info" onclick="showInfo()">i</div>
+<div class="info-text">
+  Diese Website zeigt Hover-Effekte. Tippe, um sie auf Touch-Geräten zu simulieren!
+</div>
 
     <!-- About Hover Section -->
     <section id="about-hover" class="section">
@@ -509,6 +541,19 @@ ul {
   });
 
   const hoverables = document.querySelectorAll('.hoverable');
+
+  // Zeige Pop-up
+  document.querySelector('.touch-popup').classList.add('show');
+  
+  // Funktion zum Schließen des Pop-ups
+  function closePopup() {
+    document.querySelector('.touch-popup').classList.remove('show');
+  }
+  
+  // Info-Text anzeigen
+  function showInfo() {
+    document.querySelector('.info-text').classList.toggle('show');
+  }
 
   // Background Color
   const backgroundColorOptions = document.querySelectorAll('#background-color-options .color-option');
