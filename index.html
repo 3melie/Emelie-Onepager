@@ -4,9 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Power of Hover</title>
-  <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
@@ -123,17 +120,17 @@ ul {
   transition: 1.5s;
 }
 
-/* Media Queries Fix */
+/* Phone Screen */
 @media (max-width: 768px) {
   body {
-    font-size: medium; /* Deutliche Änderung zur Fehlerbehebung */
+    font-size: medium;
     margin: 5px;
   }
-}
+} 
 
 @media (max-width: 480px) {
   body {
-    font-size: medium; /* Noch kleiner für sehr schmale Bildschirme */
+    font-size: medium;
     margin: 5px;
   }
 
@@ -149,7 +146,6 @@ ul {
   --hover-scale: 1;
   --hover-rotation: 0deg;
 }
-
 
 .user-customization {
   flex-direction: column;
@@ -205,17 +201,16 @@ ul {
   flex: 1;
   padding: 50px 20px;
   text-align: center;
-  color: #b7c4ec; /* Standardfarbe: Lila */
+  color: #b7c4ec;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
 .hoverable:hover {
-  color: var(--hover-bg-color); /* Wechselt zu der ausgewählten Farbe */
-  box-shadow: 0 0 40px var(--hover-glow-color);
-  background-color: var(--hover-bg-color);
-  transform: scale(var(--hover-scale)) rotate(var(--hover-rotation));
+  box-shadow: 0 0 40px var(--hover-glow-color); /*change color */
+  background-color: var(--hover-bg-color); /*change glow */
+  transform: scale(var(--hover-scale)) rotate(var(--hover-rotation)); /*change scale & rotation */
 }
 
 .slider {
@@ -228,8 +223,8 @@ ul {
   width: 100%;
   -webkit-appearance: none;  /* Override default CSS styles */
   appearance: none;
-  background: #333; /* Grey background */
-  outline: none; /* Remove outline */
+  background: #333;
+  outline: none;
   opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
   -webkit-transition: .2s; /* 0.2 seconds transition on hover */
   transition: opacity .2s;
@@ -244,18 +239,18 @@ ul {
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */
   appearance: none;
-  width: 20px; /* Set a specific slider handle width */
+  width: 20px; /* slider handle width */
   height: 20px; /* Slider handle height */
   border-radius: 100%;
-  background: rgb(227, 237, 255); /* Green background */
-  cursor: pointer; /* Cursor on hover */
+  background: rgb(227, 237, 255);
+  cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-  width: 25px; /* Set a specific slider handle width */
+  width: 25px; /* slider handle width */
   height: 25px; /* Slider handle height */
-  background: rgb(227, 237, 255); /* Green background */
-  cursor: pointer; /* Cursor on hover */
+  background: rgb(227, 237, 255);
+  cursor: pointer;
 }
 
 .interactive-box {
@@ -287,7 +282,6 @@ ul {
   }
 }
 
-
     /* Footer */
     .footer {
       text-align: center;
@@ -302,11 +296,11 @@ ul {
     /* Cursor */
     .trail {
       position: absolute;
-      width: 10px; /* Größe der Spur */
+      width: 10px; /* size of trail */
       height: 10px;
-      background-color: rgba(34, 34, 36, 0.8); /* Farbe der Spur */
+      background-color: rgba(34, 34, 36, 0.8);
       border-radius: 40%;
-      pointer-events: none; /* Keine Interaktion mit der Spur */
+      pointer-events: none; /* no interaction with trail */
       animation: fadeOut 1s forwards;
     }
 
@@ -321,6 +315,7 @@ ul {
       }
     }
 
+    /* information for non hover devices */
     @media (hover: none) {
       .touch-popup {
     position: fixed;
@@ -329,15 +324,15 @@ ul {
     transform: translate(-50%, -50%);
     background-color: rgba(0, 0, 0, 0.8);
     color: #fff;
-    padding: 30px 20px 20px;  /* Mehr Padding oben, damit der Button nicht über den Text ragt */
+    padding: 30px 20px 20px;  /* so that x button is above text */
     border-radius: 10px;
     z-index: 1000;
     text-align: center;
     font-size: medium;
     animation: fadeIn 1s ease-in-out;
     display: none;
-    width: 60%;  /* Optional: Maximale Breite anpassen */
-    max-width: 400px; /* Optional: Maximale Breite einstellen */
+    width: 60%; 
+    max-width: 400px;
   }
 
   .touch-popup.show {
@@ -384,7 +379,7 @@ ul {
     to { opacity: 1; }
   }
 
-  /* Info Text für das Info-Symbol */
+  /* Info-Symbol */
   .info-text {
     position: fixed;
     bottom: 80px;
@@ -502,7 +497,7 @@ ul {
     
     
 
-    <!-- Why Hover Matters Section -->
+    <!-- The Importance of Hover Section -->
     <section id="importance" class="section">
       <h2>The Importance of Hover Effects in UI/UX Design</h2>
       <br>
@@ -519,6 +514,7 @@ ul {
       <p><strong>“A user interface is like a joke. If you have to explain it, it’s not that good."</strong> — Martin LeBlanc (2014)</p>
     </section>
 
+    <!-- Popup with information on how to use website on non hover devices -->
     <div class="touch-popup">
       Welcome!
       <br>
@@ -533,6 +529,7 @@ ul {
       <button class="close-btn" onclick="closePopup()">X</button>
     </div>
     
+    <!-- Info Button in case they don't read popup -->
     <div class="touch-info" onclick="showInfo()">i</div>
     <div class="info-text">
       It looks like your device does not support hover effects, but don’t worry! 
@@ -548,6 +545,8 @@ ul {
     </footer>
 
 <script>
+
+  //cool effect behind headline
   const hero = document.querySelector('.hero');
 
   hero.addEventListener('mousemove', (e) => {
@@ -564,15 +563,15 @@ ul {
 
   const hoverables = document.querySelectorAll('.hoverable');
 
-  // Zeige Pop-up
+  // show Pop-up
   document.querySelector('.touch-popup').classList.add('show');
   
-  // Funktion zum Schließen des Pop-ups
+  // close Pop-up
   function closePopup() {
     document.querySelector('.touch-popup').classList.remove('show');
   }
   
-  // Info-Text anzeigen
+  // show Info-Text 
   function showInfo() {
     document.querySelector('.info-text').classList.toggle('show');
   }
@@ -639,32 +638,31 @@ ul {
 
 
 
-  // Flag, um zu überprüfen, ob die Maus über einem Element ist
+  // check if mouse ois present
   let isOverElement = false;
 
-  // Event-Listener für Mausbewegungen
+  // Event-Listener for movement
   document.body.addEventListener('mousemove', (e) => {
-    // Wenn die Maus über einem Element ist, keinen Trail anzeigen
+    // no trail when on element
     if (isOverElement) return;
 
-    // Erstelle ein neues Spur-Element
+    // new trail element
     const trail = document.createElement('div');
     trail.classList.add('trail');
 
-    // Setze die Position der Spur relativ zur Maus
+    // positioning of trail relative to mouse
     trail.style.left = `${e.pageX}px`;
     trail.style.top = `${e.pageY}px`;
 
-    // Füge die Spur zum Dokument hinzu
     document.body.appendChild(trail);
 
-    // Entferne die Spur nach 1 Sekunde, um Speicher zu sparen
+    // remove trail, save storage
     setTimeout(() => {
       trail.remove();
     }, 1000);
   });
 
-  // Event-Listener, um festzustellen, ob die Maus über einem Element ist
+  // check if mouse is over element
   document.body.addEventListener('mouseover', (e) => {
     if (e.target !== document.body) {
       isOverElement = true;
