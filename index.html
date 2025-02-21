@@ -317,7 +317,7 @@ ul {
 
     /* information for non hover devices */
     @media (hover: none) {
-      .touch-popup {
+    .touch-popup {
     position: fixed;
     top: 40%;
     left: 50%;
@@ -396,6 +396,23 @@ ul {
 
   .info-text.show {
     display: block;
+  }
+}
+
+@media (hover: none) {
+  .slider-info {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: small;
+    color: #d54c2e;
+  }
+}
+
+@media (hover: hover) {
+  .slider-info {
+    display: none;
   }
 }
 
@@ -491,10 +508,10 @@ ul {
             <input type="range" min="0" max="180" value="0" class="slider" id="rotation-slider">
           </div>
         </div>
+    <div class="slider-info"> <p> Tap don't slide! </p></div>
       </div>
     
     </section>
-    
     
 
     <!-- The Importance of Hover Section -->
@@ -566,6 +583,9 @@ ul {
   // show Pop-up
   document.querySelector('.touch-popup').classList.add('show');
   
+
+  document.querySelector('.slider-info').classList.add('show');
+
   // close Pop-up
   function closePopup() {
     document.querySelector('.touch-popup').classList.remove('show');
